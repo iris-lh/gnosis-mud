@@ -1,9 +1,9 @@
 - id: 1
   name: "Worn 9mm Pistol"
   type: WEAPON
-  roomDesc: "Worn 9mm Pistol"
+  roomDesc: "A worn 9mm pistol"
   keywords: [ "gun", "9mm", "pistol", "worn" ]
-  description: "A tarnished 9mm pistol covered in scratches and dirt."
+  description: "A tarnished 9mm pistol covered in scratches and dirt. Hopefully it won't jam."
   script: "1-pistol"
   slot: 'main hand'
   level: 1
@@ -23,9 +23,9 @@
       duration: 240
 - id: 3
   type: CONTAINER
-  name: "Metal Locker"
+  name: "Rusty Metal Locker"
   roomDesc: "A metal locker sits against the wall, badly rusted."
-  keywords: [ "metal", "locker" ]
+  keywords: [ "rusty", "metal", "locker" ]
   description: "Time has not been kind to this locker. It seems to be held together solely by the rust."
   items: [ "limbo:1", "limbo:6", "limbo:7", "limbo:8", "limbo:11", "limbo:12", "limbo:13", "limbo:14" ]
   maxItems: 8
@@ -34,7 +34,7 @@
 - id: 4
   name: "Scrap Metal"
   quality: poor
-  roomDesc: "Scrap Metal from a Training Android"
+  roomDesc: "Scrap metal from a training android"
   keywords: [ "dummy", "scraps" ]
   description: "Jagged metal bits, shattered, and generally destroyed remains of a training android"
   behaviors:
@@ -44,13 +44,13 @@
 - id: 5
   name: ".45 Pistol"
   type: WEAPON
-  roomDesc: ".45 Pistol"
+  roomDesc: "A .45 pistol"
   keywords: ["pistol", ".45"]
   description: "A .45 Caliber Pistol. This firearm looks well-maintained."
   slot: "main hand"
   quality: rare
   itemLevel: 10
-  level: 3
+  level: 1
   properties:
     minDamage: 50
     maxDamage: 75
@@ -65,7 +65,7 @@
 - id: 6
   name: "Ballistic Vest"
   type: ARMOR
-  roomDesc: "Ballistic Vest"
+  roomDesc: "A ballistic vest"
   keywords: ["ballistic", "vest"]
   description: "A black vest made from ballistic fiber."
   slot: "chest armor"
@@ -80,16 +80,16 @@
       value: 30
       currency: cr
 - id: 7
-  name: "First Aid Kit I"
-  roomDesc: "A First Aid Kit I"
-  keywords: [ "first", "aid", "kit" ]
-  type: POTION
+  name: "First Aid Kit (Basic)"
+  roomDesc: "A basic first aid kit"
+  keywords: [ "first", "aid", "kit", "basic" ]
+  type: DRUG
   level: 1
   behaviors:
     # usable has two variants: spell, and effect
     usable:
       # this is the spell variant, you specify a skill of type SPELL
-      spell: "potion"
+      spell: "drug"
       # charges/destroyOnDepleted lets you create consumable items
       # without specifying charges the item can be used forever
       charges: 5
@@ -101,15 +101,15 @@
         restores: 30
         stat: "health"
 - id: 8
-  name: "Stimulant I"
-  roomDesc: "A Stimulant I"
+  name: "Basic Stimulant"
+  roomDesc: "A basic stimulant syringe"
   keywords: [ "stimulant", "stim" ]
-  type: POTION
+  type: DRUG
   level: 1
   behaviors:
     usable:
       # this is the effect variant, you specify an effect name instead of a spell
-      effect: "potion.buff"
+      effect: "drug.buff"
       charges: 2
       destroyOnDepleted: true
       # effect config, see Effect docs. `name` is auto-populated with the item name
@@ -123,14 +123,14 @@
 - id: 9
   name: "Pulse Rifle"
   type: WEAPON
-  roomDesc: "A Pulse Rifle"
+  roomDesc: "A pulse rifle"
   keywords: ["pulse", "rifle", "gun"]
   description: "You could say its a pretty dope gun."
   slot: "main hand"
   quality: epic
   script: "9-pulse-rifle"
   itemLevel: 15
-  level: 5
+  level: 1
   properties:
     minDamage: 25
     maxDamage: 50
@@ -143,7 +143,7 @@
 - id: 10
   name: "Civilian Shield Generator"
   type: ARMOR
-  roomDesc: "Civilian Shield Generator"
+  roomDesc: "A small civilian shield generator"
   keywords: ["shield", "civilian", "generator"]
   description: "A humble personal shield generator designed for the civilian market."
   slot: "shield"
@@ -152,15 +152,15 @@
   itemLevel: 1
   properties:
     stats:
-      armor: 20
+      armor: 30
   behaviors:
     sellable:
       value: 30
       currency: cr
 - id: 11
-  name: "A Pair of Gray Pants"
+  name: "Pair of Gray Pants"
   type: ARMOR
-  roomDesc: "A Pair of Gray Pants"
+  roomDesc: "A pair of gray pants"
   keywords: ["gray", "pants"]
   description: "A sturdy pair of gray cotton pants."
   slot: "leg clothing"
@@ -175,9 +175,9 @@
       value: 30
       currency: cr
 - id: 12
-  name: "A Black Long-Sleeved T-Shirt"
+  name: "Black Long-Sleeved T-Shirt"
   type: ARMOR
-  roomDesc: "A Black Long-Sleeved T-Shirt"
+  roomDesc: "A black long-sleeved t-shirt"
   keywords: ["black", "long", "sleeved", "shirt"]
   description: "A black cotton long-sleeved crew-neck t-shirt."
   slot: "torso clothing"
@@ -192,9 +192,9 @@
       value: 20
       currency: cr
 - id: 13
-  name: "A Pair of Black Boots"
+  name: "Pair of Black Boots"
   type: ARMOR
-  roomDesc: "A Pair of Black Boots"
+  roomDesc: "A pair of black boots"
   keywords: ["black", "boots"]
   description: "A pair of mid-calf lace-up boots made from thick synthetic weave. The treaded rubber soles provide great traction."
   slot: "feet"
@@ -209,9 +209,9 @@
       value: 30
       currency: cr
 - id: 14
-  name: "An Olive Canvas Field Jacket"
+  name: "Olive Canvas Field Jacket"
   type: ARMOR
-  roomDesc: "A Pair of Black Boots"
+  roomDesc: "An olive-green canvas field jacket"
   keywords: ["olive", "canvas", "field", "jacket"]
   description: "A thick, well-worn, olive-drab canvas field jacket with pockets on the chest and hips. The high collar comfortably shields one's neck from the wind."
   slot: "about body"

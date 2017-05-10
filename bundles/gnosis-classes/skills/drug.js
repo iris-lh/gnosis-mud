@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Health potion item spell
+ * First aid kit item spell
  */
 module.exports = (srcPath) => {
   const Broadcast = require(srcPath + 'Broadcast');
@@ -9,7 +9,7 @@ module.exports = (srcPath) => {
   const SkillType = require(srcPath + 'SkillType');
 
   return {
-    name: 'Potion',
+    name: 'Drug',
     type: SkillType.SPELL,
     requiresTarget: true,
     targetSelf: true,
@@ -24,7 +24,7 @@ module.exports = (srcPath) => {
         source: this
       });
 
-      Broadcast.sayAt(player, `<bold>You drink the potion and a warm feeling fills your body.</bold>`);
+      Broadcast.sayAt(player, `<bold>You treat your wounds with he first aid kit.</bold>`);
       heal.commit(target);
     },
 

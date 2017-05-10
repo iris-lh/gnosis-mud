@@ -16,8 +16,8 @@ module.exports = (srcPath) => {
         level: 1,
         desc: `A voice whispers to you: Welcome to the world, young one. This is a dangerous and deadly place, you should arm yourself.
 
- - Use '<white>get sword chest</white>' and '<white>get vest chest</white>' to get some gear.
- - Equip it using '<white>wield sword</white>' and '<white>wear vest</white>'`,
+ - Use '<white>get gun chest</white>' and '<white>get vest chest</white>' to get some gear.
+ - Equip it using '<white>wield gun</white>' and '<white>wear vest</white>'`,
         autoComplete: true,
         reward: (quest, player) => {
           player.emit('experience', LevelUtil.mobExp(quest.config.level) * 5);
@@ -26,7 +26,7 @@ module.exports = (srcPath) => {
           say(player);
           say(
             player,
-            `<b><yellow>The rat looks like it is hungry, use '<white>quest list rat</white>' to see what aid you can offer. Use '<white>quest start rat 1</white>' to accept their task.</yellow></b>`,
+            `<b><yellow>The rat looks hungry, use '<white>quest list rat</white>' to see what aid you can offer. Use '<white>quest start rat 1</white>' to accept their task.</yellow></b>`,
             80
           );
           say(player);
@@ -88,7 +88,7 @@ Once you find some bring it back to the rat, use '<white>quest log</white>' to f
         autoComplete: true,
         desc: `A voice whispers to you: It would be wise to practice protecting yourself. There are a number of training dummies in this area that, while not pushovers, will not be too difficult.
 
-- Use '<white>attack dummy</white>' to start combat against the training dummy
+- Use '<white>kill droid</white>' to start combat against the training android
 - Once it's dead any loot it drops will be in its corpse on the ground. You can use '<white>look in corpse</white>' to check again or '<white>loot corpse</white>' to retrieve all your loot.`,
         reward: (quest, player) => {
           player.emit('experience', LevelUtil.mobExp(quest.config.level) * 5);
@@ -99,7 +99,7 @@ Once you find some bring it back to the rat, use '<white>quest log</white>' to f
       goals: [
         {
           type: KillGoal,
-          config: { title: "Kill a Training Dummy", npc: "limbo:4", count: 1 }
+          config: { title: "Kill a Training Android", npc: "limbo:4", count: 1 }
         }
       ]
     }

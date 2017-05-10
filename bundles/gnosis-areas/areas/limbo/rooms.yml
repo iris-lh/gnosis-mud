@@ -110,7 +110,7 @@
   description: >-
     A very brightly colored shop stall stands in the middle of an otherwise desolate clearing. The stall is covered in
     colorful cloth, shining gems, and battle gear of all varieties. A large sign sits next to the products:
-    "<b><yellow>Wally's Wonderful Wares</yellow></b> has the best products in town! Armor, weapons and potions, you name
+    "<b><yellow>Wally's Wonderful Wares</yellow></b> has the best products in town! Armor, weapons, pharmaceuticals, you name
     and we... might have it!"
   npcs:
     - id: "limbo:6"

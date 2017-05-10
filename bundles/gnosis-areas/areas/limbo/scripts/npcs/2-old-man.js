@@ -14,7 +14,7 @@ module.exports = (srcPath) => {
         const speak = state.EffectFactory.create('speak', this, {}, {
           messageList: [
             "Welcome, %player%. The combat training area lies to the east.",
-            "To the west lies Wally's shop where you can stock up on potions.",
+            "To the west lies Wally's shop where you can stock up on gear and medical supplies.",
           ],
           outputFn: message => {
             message = message.replace(/%player%/, player.name);

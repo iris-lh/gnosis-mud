@@ -6,8 +6,8 @@ module.exports = srcPath => {
 
   return {
     config: {
-      name: 'Potion Buff',
-      type: 'potion.buff',
+      name: 'Drug Buff',
+      type: 'drug.buff',
     },
     flags: [Flag.BUFF],
     state: {
@@ -25,7 +25,7 @@ module.exports = srcPath => {
     },
     listeners: {
       effectActivated: function () {
-        Broadcast.sayAt(this.target, "You drink down the potion and feel more powerful!");
+        Broadcast.sayAt(this.target, "You inject the syringe and feel stronger!");
       },
 
       effectDeactivated: function () {
@@ -34,4 +34,3 @@ module.exports = srcPath => {
     }
   };
 };
-
