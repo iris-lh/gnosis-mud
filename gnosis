@@ -1,0 +1,195 @@
+#!/usr/bin/env node
+'use strict';
+
+/**
+ * Main file, use this to run the server:
+ * node gnosis [options]
+ *
+ * Options:
+ *   -v Verbose loggin
+ *   --port Port to listen on
+ *   --locale Locale to act as the default
+ *   --save Minutes between autosave
+ *   --respawn Minutes between respawn
+ */
+
+//TODO: Refactor
+
+/* NPM Modules */
+const net = require('net');
+const commander = require('commander');
+const wrap = require('wrap-ansi');
+const argv = require('optimist').argv;
+
+// Package.json for versioning
+const pkg = require('./package.json');
+
+// State managers and factories
+const AccountManager = require('./src/AccountManager');
+const AreaManager = require('./src/AreaManager');
+const BehaviorManager = require('./src/BehaviorManager');
+const ChannelManager = require('./src/ChannelManager');
+const ClassManager = require('./src/ClassManager');
+const CommandManager = require('./src/CommandManager');
+const EffectFactory = require('./src/EffectFactory');
+const EventManager = require('./src/EventManager');
+const HelpManager = require('./src/HelpManager');
+const ItemFactory = require('./src/ItemFactory');
+const ItemManager = require('./src/ItemManager');
+const MobFactory = require('./src/MobFactory');
+const PartyManager = require('./src/PartyManager');
+const PlayerManager = require('./src/PlayerManager');
+const QuestFactory = require('./src/QuestFactory');
+const RoomManager = require('./src/RoomManager');
+const SkillManager = require('./src/SkillManager');
+
+const Telnet = require('./src/Telnet');
+const Data = require('./src/Data');
+
+// Wrapper for gnosis.json
+const Config = require('./src/Config');
+
+// cmdline options
+commander
+  .version(pkg.version)
+  .option('-s, --save [time]', 'Number of seconds between auto-save ticks [10]', 10)
+  .option('-r, --respawn [time]', 'Number of minutes between respawn ticks [120]', 120)
+  .option('-p, --port [portNumber]', 'Port to host telnet server [23]', Config.get('port', 23))
+  .option('-v, --verbose', 'Verbose console logging.', true)
+  .option('-e, --prettyErrors', 'Pretty-print formatting for error stack traces.', false)
+  .parse(process.argv);
+
+// Set debug variable and encoding.
+// 'net' by default to help find possible server errors.
+process.env.NODE_DEBUG = 'net';
+process.stdin.setEncoding('utf8');
+
+const Logger = require('./src/Logger');
+const logfile = Config.get('logfile');
+if (logfile) {
+  Logger.setFileLogging(logfile);
+}
+
+if (commander.prettyErrors) {
+  Logger.enablePrettyErrors();
+}
+
+// Set logging level based on CLI option or environment variable.
+const logLevel = commander.verbose ?
+  'verbose' :
+  process.env.LOG_LEVEL || Config.get('logLevel') || 'debug';
+
+Logger.setLevel(logLevel);
+
+
+// Global state object, server instance and configurable intervals.
+let GameState = {};
+let saveInterval, tickInterval;
+let server;
+
+/**
+ * Do the dirty work
+ */
+function init(restartServer) {
+  Logger.log("START - Loading entities");
+  restartServer = typeof restartServer === 'undefined' ? true : restartServer;
+
+  GameState = {
+    AccountManager: new AccountManager(),
+    AreaManager: new AreaManager(),
+    ChannelManager: new ChannelManager(),
+    ClassManager: new ClassManager(), // player class manager
+    CommandManager: new CommandManager(),
+    Config, // All global server settings like default respawn time, save interval, port, what bundles to load, etc.
+    EffectFactory: new EffectFactory(),
+    HelpManager: new HelpManager(),
+    InputEventManager: new EventManager(),
+    ItemBehaviorManager: new BehaviorManager(),
+    ItemFactory: new ItemFactory(),
+    ItemManager: new ItemManager(),
+    MobBehaviorManager: new BehaviorManager(),
+    MobFactory: new MobFactory(),
+    PartyManager: new PartyManager(),
+    PlayerManager: new PlayerManager(),
+    QuestFactory: new QuestFactory(),
+    RoomBehaviorManager: new BehaviorManager(),
+    RoomManager: new RoomManager(),
+    SkillManager: new SkillManager(),
+    SpellManager: new SkillManager()
+  };
+
+  // Setup bundlemanager
+  const BundleManager = new (require('./src/BundleManager'))(GameState);
+  BundleManager.loadBundles();
+
+  // Set up web API
+  const WebInterface = new (require('./src/Api/WebInterface'))(GameState);
+  WebInterface.init();
+
+  if (restartServer) {
+    Logger.log("START - Starting server");
+
+    /**
+    * Effectively the 'main' game loop but not really because it's a REPL
+    */
+    server = new Telnet.TelnetServer({}, socket => {
+      const banned = Data.parseFile(__dirname + '/data/banned.json');
+      if (banned.includes(socket.address().address)) {
+        return socket.destroy();
+      }
+
+      socket.on('interrupt', () => {
+        socket.write("\n*interrupt*\n");
+      });
+
+      socket.on('error', Logger.error);
+
+      // Register all of the input events (login, etc.)
+      GameState.InputEventManager.attach(socket);
+
+      socket.write("Connecting...\n");
+      Logger.log("User connected...");
+
+      // @see: bundles/gnosis-events/events/login.js
+      socket.emit('intro', socket);
+    }).netServer;
+
+    // Start the server and setup error handlers.
+    server.listen(commander.port).on('error', err => {
+      if (err.code === 'EADDRINUSE') {
+        Logger.error(`Cannot start server on port ${commander.port}, address is already in use.`);
+        Logger.error("Do you have a MUD server already running?");
+      } else if (err.code === 'EACCES') {
+        Logger.error(`Cannot start server on port ${commander.port}: permission denied.`);
+        Logger.error("Are you trying to start it on a priviledged port without being root?");
+      } else {
+        Logger.error("Failed to start MUD server:");
+        Logger.error(err);
+      }
+      process.exit(1);
+    });
+
+    // Save every 10 minutes by default.
+    Logger.log(`Setting autosave to ${commander.save} seconds.`);
+    clearInterval(saveInterval);
+    saveInterval = setInterval(() => {
+      GameState.PlayerManager.saveAll();
+    }, commander.save * 1000);
+
+    // Ticks for effect processing and combat happen every half second
+    clearInterval(tickInterval);
+    tickInterval = setInterval(() => {
+      GameState.PlayerManager.emit('updateTick');
+      GameState.AreaManager.tickAll(GameState);
+      GameState.ItemManager.tickAll();
+    }, 100);
+
+    // TODO: RESPAWN
+  }
+  Logger.log(`Server started on port: ${commander.port}...`);
+  server.emit('startup');
+};
+
+// START IT UP!
+init();
+// vim: set syn=javascript :

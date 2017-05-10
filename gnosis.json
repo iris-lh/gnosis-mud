@@ -1,0 +1,35 @@
+{
+  "port": 4000,
+  "webPort": 9001,
+  "webWhitelist": [
+    "localhost",
+    "127.0.0.1",
+    "::1"
+  ],
+  "bundles": [
+    "gnosis-areas",
+    "gnosis-channels",
+    "gnosis-commands",
+    "gnosis-effects",
+    "gnosis-groups",
+    "gnosis-input-events",
+    "gnosis-player-events",
+    "gnosis-skills",
+    "gnosis-combat",
+    "gnosis-classes",
+    "gnosis-crafting",
+    "gnosis-quests",
+    "gnosis-vendors",
+    "debug-commands"
+  ],
+  "maxAccountNameLength": 20,
+  "minAccountNameLength": 3,
+  "maxPlayerNameLength": 20,
+  "minPlayerNameLength": 3,
+  "maxCharacters": 3,
+  "allowMultiplay": false,
+  "startingRoom": "limbo:1",
+  "moveCommand": "move",
+  "skillLag": 2000,
+  "defaultMaxPlayerInventory": 16
+}
