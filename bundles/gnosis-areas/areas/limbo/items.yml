@@ -1,18 +1,18 @@
 - id: 1
-  name: "Rusty Sword"
+  name: "Worn 9mm Pistol"
   type: WEAPON
-  roomDesc: "Rusted Sword"
-  keywords: [ "sword", "rusty", "metal", "rusted" ]
-  description: "An arm's-length, jagged metal sword discolored with red corrosion. The worn leather grip barely held on by fraying thread."
-  script: "1-sword"
-  slot: 'wield'
+  roomDesc: "Worn 9mm Pistol"
+  keywords: [ "gun", "9mm", "pistol", "worn" ]
+  description: "A tarnished 9mm pistol covered in scratches and dirt."
+  script: "1-pistol"
+  slot: 'main hand'
   level: 1
   itemLevel: 1
   quality: common
   properties:
-    minDamage: 7
-    maxDamage: 15
-    speed: 2.8
+    minDamage: 20
+    maxDamage: 50
+    speed: 1.5
 - id: 2
   name: "Slice of Cheese"
   roomDesc: "A moldy slice of cheese"
@@ -23,52 +23,52 @@
       duration: 240
 - id: 3
   type: CONTAINER
-  name: "Wooden Chest"
-  roomDesc: "A wooden chest rests open in the corner, its hinges badly rusted."
-  keywords: [ "wooden", "chest" ]
-  description: "Time has not been kind to this chest. It seems to be held together solely by the dirt and rust."
-  items: [ "limbo:1", "limbo:6", "limbo:7", "limbo:8" ]
-  maxItems: 5
+  name: "Metal Locker"
+  roomDesc: "A metal locker sits against the wall, badly rusted."
+  keywords: [ "metal", "locker" ]
+  description: "Time has not been kind to this locker. It seems to be held together solely by the rust."
+  items: [ "limbo:1", "limbo:6", "limbo:7", "limbo:8", "limbo:11", "limbo:12", "limbo:13", "limbo:14" ]
+  maxItems: 8
   properties:
     noPickup: true
 - id: 4
-  name: "Scraps"
+  name: "Scrap Metal"
   quality: poor
-  roomDesc: "Scraps from a Training Dummy"
+  roomDesc: "Scrap Metal from a Training Android"
   keywords: [ "dummy", "scraps" ]
-  description: "Splintered, shattered, and generally destroyed remains of a training dummy"
+  description: "Jagged metal bits, shattered, and generally destroyed remains of a training android"
   behaviors:
     sellable:
       value: 5
-      currency: gold
+      currency: cr
 - id: 5
-  name: "Training Sword"
+  name: ".45 Pistol"
   type: WEAPON
-  roomDesc: "Training Sword"
-  keywords: ["sword", "training", "iron"]
-  description: "A hefty iron blade. Not the sharpest sword in the world but it will get the job done."
-  slot: "wield"
+  roomDesc: ".45 Pistol"
+  keywords: ["pistol", ".45"]
+  description: "A .45 Caliber Pistol. This firearm looks well-maintained."
+  slot: "main hand"
   quality: rare
   itemLevel: 10
-  level: 5
+  level: 3
   properties:
-    minDamage: 11
-    maxDamage: 20
-    speed: 2.8
+    minDamage: 50
+    maxDamage: 75
+    speed: 2
     stats:
       strength: 2
       stamina: 2
   behaviors:
     sellable:
       value: 30
-      currency: gold
+      currency: cr
 - id: 6
-  name: "Leather Vest"
+  name: "Ballistic Vest"
   type: ARMOR
-  roomDesc: "Leather Vest"
-  keywords: ["leather", "vest"]
-  description: "A plain leather vest. Better than nothing."
-  slot: "chest"
+  roomDesc: "Ballistic Vest"
+  keywords: ["ballistic", "vest"]
+  description: "A black vest made from ballistic fiber."
+  slot: "chest armor"
   quality: common
   level: 1
   itemLevel: 1
@@ -78,11 +78,11 @@
   behaviors:
     sellable:
       value: 30
-      currency: gold
+      currency: cr
 - id: 7
-  name: "Potion of Health I"
-  roomDesc: "Potion of Health I"
-  keywords: [ "potion", "health" ]
+  name: "First Aid Kit I"
+  roomDesc: "A First Aid Kit I"
+  keywords: [ "first", "aid", "kit" ]
   type: POTION
   level: 1
   behaviors:
@@ -101,9 +101,9 @@
         restores: 30
         stat: "health"
 - id: 8
-  name: "Potion of Strength I"
-  roomDesc: "Potion of Strength I"
-  keywords: [ "potion", "strength" ]
+  name: "Stimulant I"
+  roomDesc: "A Stimulant I"
+  keywords: [ "stimulant", "stim" ]
   type: POTION
   level: 1
   behaviors:
@@ -121,39 +121,107 @@
         magnitude: 10
         stat: "strength"
 - id: 9
-  name: "Blade of Gnosis"
+  name: "Pulse Rifle"
   type: WEAPON
-  roomDesc: "Blade of Gnosis"
-  keywords: ["sword", "blade", "gnosis"]
-  description: "The blade shines a brilliant silver. Holding it you feel as if you could take on the world."
-  slot: "wield"
+  roomDesc: "A Pulse Rifle"
+  keywords: ["pulse", "rifle", "gun"]
+  description: "You could say its a pretty dope gun."
+  slot: "main hand"
   quality: epic
-  script: "9-gnosis-blade"
+  script: "9-pulse-rifle"
   itemLevel: 15
-  level: 10
+  level: 5
   properties:
-    minDamage: 13
-    maxDamage: 26
-    speed: 2.8
+    minDamage: 25
+    maxDamage: 50
+    speed: 0.5
     specialEffects:
-      - "Chance on hit: Blade of Gnosis thirsts for blood and heals the wielder for 25% of damage done."
+      - "Chance on hit: Pulse Rifle thirsts for blood and heals the wielder for 25% of damage done."
     stats:
       strength: 2
       stamina: 2
 - id: 10
-  name: "Wooden Shield"
+  name: "Civilian Shield Generator"
   type: ARMOR
-  roomDesc: "Wooden Shield"
-  keywords: ["shield", "wooden"]
-  description: "A rather uninteresting looking wooden shield. A rusted metal band barely hold its together and the leather arm band is nearly torn."
+  roomDesc: "Civilian Shield Generator"
+  keywords: ["shield", "civilian", "generator"]
+  description: "A humble personal shield generator designed for the civilian market."
   slot: "shield"
   quality: common
   level: 1
   itemLevel: 1
   properties:
     stats:
-      armor: 10
+      armor: 20
   behaviors:
     sellable:
       value: 30
-      currency: gold
+      currency: cr
+- id: 11
+  name: "A Pair of Gray Pants"
+  type: ARMOR
+  roomDesc: "A Pair of Gray Pants"
+  keywords: ["gray", "pants"]
+  description: "A sturdy pair of gray cotton pants."
+  slot: "leg clothing"
+  quality: common
+  level: 1
+  itemLevel: 1
+  properties:
+    stats:
+      armor: 4
+  behaviors:
+    sellable:
+      value: 30
+      currency: cr
+- id: 12
+  name: "A Black Long-Sleeved T-Shirt"
+  type: ARMOR
+  roomDesc: "A Black Long-Sleeved T-Shirt"
+  keywords: ["black", "long", "sleeved", "shirt"]
+  description: "A black cotton long-sleeved crew-neck t-shirt."
+  slot: "torso clothing"
+  quality: common
+  level: 1
+  itemLevel: 1
+  properties:
+    stats:
+      armor: 3
+  behaviors:
+    sellable:
+      value: 20
+      currency: cr
+- id: 13
+  name: "A Pair of Black Boots"
+  type: ARMOR
+  roomDesc: "A Pair of Black Boots"
+  keywords: ["black", "boots"]
+  description: "A pair of mid-calf lace-up boots made from thick synthetic weave. The treaded rubber soles provide great traction."
+  slot: "feet"
+  quality: common
+  level: 1
+  itemLevel: 1
+  properties:
+    stats:
+      armor: 6
+  behaviors:
+    sellable:
+      value: 30
+      currency: cr
+- id: 14
+  name: "An Olive Canvas Field Jacket"
+  type: ARMOR
+  roomDesc: "A Pair of Black Boots"
+  keywords: ["olive", "canvas", "field", "jacket"]
+  description: "A thick, well-worn, olive-drab canvas field jacket with pockets on the chest and hips. The high collar comfortably shields one's neck from the wind."
+  slot: "about body"
+  quality: common
+  level: 1
+  itemLevel: 1
+  properties:
+    stats:
+      armor: 7
+  behaviors:
+    sellable:
+      value: 40
+      currency: cr

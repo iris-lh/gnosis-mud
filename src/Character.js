@@ -35,6 +35,7 @@ class Character extends EventEmitter
     this.name = data.name;
     this.inventory = new Inventory(data.inventory || {});
     this.equipment = data.equipment || new Map();
+    this.weaponSlot = 'main hand';
     this.combatants = new Set();
     this.combatData = {};
     this.level = data.level || 1;
@@ -358,7 +359,7 @@ class Character extends EventEmitter
   }
 
   getWeaponDamage() {
-    const weapon = this.equipment.get('wield');
+    const weapon = this.equipment.get(this.weaponSlot);
     let min = 0, max = 0;
     if (weapon) {
       min = weapon.properties.minDamage;
@@ -373,7 +374,7 @@ class Character extends EventEmitter
 
   getWeaponSpeed() {
     let speed = 2.0;
-    const weapon = this.equipment.get('wield');
+    const weapon = this.equipment.get(this.weaponSlot);
     if (!this.isNpc && weapon) {
       speed = weapon.properties.speed;
     }

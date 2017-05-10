@@ -150,8 +150,8 @@ module.exports = (srcPath) => {
         buf += ` <b>${target.name}</b> for <b>${damage.finalAmount}</b> damage.`;
         B.sayAt(this, buf);
 
-        if (this.equipment.has('wield')) {
-          this.equipment.get('wield').emit('hit', damage, target);
+        if (this.equipment.has('main hand')) {
+          this.equipment.get('main hand').emit('hit', damage, target);
         }
 
         // show damage to party members

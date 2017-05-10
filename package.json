@@ -1,9 +1,9 @@
 {
   "name": "gnosis-mud",
-  "version": "1.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "git://github.com/"
+    "url": "git://github.com/isaachelbling/gnosis-mud"
   },
   "license": "MIT",
   "scripts": {

@@ -94,7 +94,7 @@
 - id: 8
   title: "Ancient Wayshrine (Waypoint)"
   description: >
-    A runed black obelisk towers in the center of this clearing, surrounded by a faerie ring. The runes pulse and glow with
+    A runed black obelisk towers in the center of this clearing, surrounded by a stone circle. The runes pulse and glow with
     a soft blue light. The grass immediately around the obelisk is immaculate in stark contrast to the dying former meadow
     that makes up the clearing. The obelisk looks like it can be used as a <b><cyan>waypoint</cyan></b>.
   script: '8-waypoint'
@@ -107,7 +107,7 @@
       direction: down
 - id: 9
   title: "Wally's Wonderful Wares (Shop)"
-  description: >- 
+  description: >-
     A very brightly colored shop stall stands in the middle of an otherwise desolate clearing. The stall is covered in
     colorful cloth, shining gems, and battle gear of all varieties. A large sign sits next to the products:
     "<b><yellow>Wally's Wonderful Wares</yellow></b> has the best products in town! Armor, weapons and potions, you name

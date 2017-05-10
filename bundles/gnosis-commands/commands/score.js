@@ -99,11 +99,11 @@ module.exports = (srcPath) => {
       };
 
       printStat('strength', false); // left
-      say('<b><green>' + sprintf('%36s', 'Gold ')); // right
+      say('<b><green>' + sprintf('%36s', 'Credits ')); // right
       printStat('agility', false); // left
       say(sprintf('%36s', '.' + B.line(12) + '.')); // right
       printStat('intellect', false); // left
-      say(sprintf('%22s| <b>%10s</b> |', '', p.getMeta('currencies.gold') || 0)); // right
+      say(sprintf('%22s| <b>%10s</b> |', '', p.getMeta('currencies.cr') || 0)); // right
       printStat('stamina', false); // left
       say(sprintf('%36s', "'" + B.line(12) + "'")); // right
 
