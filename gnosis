@@ -46,7 +46,7 @@ const SkillManager = require('./src/SkillManager');
 const Telnet = require('./src/Telnet');
 const Data = require('./src/Data');
 
-// Wrapper for gnosis.json
+// Wrapper for config.json
 const Config = require('./src/Config');
 
 // cmdline options

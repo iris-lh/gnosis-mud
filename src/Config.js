@@ -30,12 +30,12 @@ class Config {
   }
 
   static load() {
-    __cache = Data.parseFile(__dirname + '/../gnosis.json');
+    __cache = Data.parseFile(__dirname + '/../config.json');
   }
 
   static save(config) {
     config = Object.assign(this.getAll(), config);
-    Data.saveFile(__dirname + '/../gnosis.json', config);
+    Data.saveFile(__dirname + '/../config.json', config);
   }
 }
 
