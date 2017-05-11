@@ -16,6 +16,7 @@ class AccountManager {
     return this.accounts.get(username);
   }
 
+  // need test
   loadAccount(username, force) {
     if (this.accounts.has(username) && !force) {
       return this.getAccount(username);
@@ -29,7 +30,7 @@ class AccountManager {
 
     let account = new Account(data);
     this.addAccount(account);
-    
+
     return account;
   }
 
