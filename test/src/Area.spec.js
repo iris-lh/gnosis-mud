@@ -13,49 +13,49 @@ xdescribe("Area", () => {
 
   describe("constructor", () => {
     it("constructs the instance", () => {
-      // TODO
+      // TODO: constructor
     });
   });
 
   describe("areaPath", () => {
     it("gets path where areas are stored", () => {
-      // TODO
+      // TODO: areaPath
     });
   });
 
   describe("getRoomById", () => {
     it("gets room by id", () => {
-      // TODO
+      // TODO: getRoomById
     });
   });
 
   describe("addRoom", () => {
     it("adds a room", () => {
-      // TODO
+      // TODO: addRoom
     });
   });
 
   describe("removeRoom", () => {
     it("removes a room", () => {
-      // TODO
+      // TODO: removeRoom
     });
   });
 
   describe("addNpc", () => {
     it("adds an Npc", () => {
-      // TODO
+      // TODO: addNpc
     });
   });
 
   describe("removeNpc", () => {
     it("removes an Npc", () => {
-      // TODO
+      // TODO: removeNpc
     });
   });
 
   describe("update", () => {
     it("updates the area", () => {
-      // TODO
+      // TODO update
     });
   });
 

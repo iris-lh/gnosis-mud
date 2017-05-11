@@ -28,8 +28,7 @@ describe("AccountManager", () => {
       am.addAccount(account)
       expect(am.accounts.get(account.username).username)
       .to.equal(account.username)
-      // TODO
-      // needs more rubust match checking
+      // TODO: needs more rubust match checking
     });
   });
 
@@ -38,14 +37,13 @@ describe("AccountManager", () => {
       am.addAccount(account)
       expect(am.getAccount(account.username).username)
       .to.equal(account.username)
-      // TODO
-      // needs more rubust match checking
+      // TODO: needs more rubust match checking
     });
   });
 
   describe("loadAccount", () => {
     it("loads an account", () => {
-      // TODO
+      // TODO loadAccount
     });
   });
 
@@ -55,8 +53,7 @@ describe("AccountManager", () => {
 
       expect(typeof am.findByName(account.username))
       .to.equal(typeof new Map())
-      // TODO
-      // needs more rubust match checking
+      // TODO: needs more rubust match checking
     });
   });
 

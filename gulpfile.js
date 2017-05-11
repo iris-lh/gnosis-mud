@@ -9,6 +9,8 @@ var paths = {
     './*.js',
     './src/*.js',
     './src/**/*.js',
+    './test/*.js',
+    './test/**/*.js',
     './scripts/**/*.js',
     './scripts/**/**/*.js',
     './commands/*.js',
