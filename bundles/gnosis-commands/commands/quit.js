@@ -4,6 +4,7 @@ module.exports = (srcPath) => {
   const Broadcast = require(srcPath + 'Broadcast');
 
   return {
+    aliases: [ 'logout' ],
     usage: 'quit',
     command: (state) => (args, player) => {
       if (player.isInCombat()) {
