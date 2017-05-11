@@ -13,7 +13,7 @@ module.exports = srcPath => {
       say("<b>" + B.center(80, 'Abilities', 'green'));
       say("<b>" + B.line(80, '=', 'green'));
 
-      for (const [ level, abilities ] of Object.entries(player.playerClass.abilityTable)) {
+      for (const [ level, abilities ] of Object.entries(player.playerCareer.abilityTable)) {
         abilities.skills = abilities.skills || [];
         abilities.spells = abilities.spells || [];
 
@@ -33,7 +33,7 @@ module.exports = srcPath => {
           let skill = state.SkillManager.get(skillId);
 
           if (!skill) {
-            Logger.error(`Invalid skill in ability table: ${player.playerClass.name}:${level}:${skillId}`);
+            Logger.error(`Invalid skill in ability table: ${player.playerCareer.name}:${level}:${skillId}`);
             continue;
           }
 
@@ -56,7 +56,7 @@ module.exports = srcPath => {
           let spell = state.SpellManager.get(spellId);
 
           if (!spell) {
-            Logger.error(`Invalid spell in ability table: ${player.playerClass.name}:${level}:${spellId}`);
+            Logger.error(`Invalid spell in ability table: ${player.playerCareer.name}:${level}:${spellId}`);
             continue;
           }
 

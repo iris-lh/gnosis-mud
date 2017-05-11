@@ -6,11 +6,11 @@ module.exports = srcPath => {
   return  {
     listeners: {
       useAbility: state => function (ability, args) {
-        if (!this.playerClass.hasAbility(ability.id)) {
+        if (!this.playerCareer.hasAbility(ability.id)) {
           return Broadcast.sayAt(this, 'Your class cannot use that ability.');
         }
 
-        if (!this.playerClass.canUseAbility(this, ability.id)) {
+        if (!this.playerCareer.canUseAbility(this, ability.id)) {
           return Broadcast.sayAt(this, 'You have not yet learned that ability.');
         }
 
@@ -21,8 +21,8 @@ module.exports = srcPath => {
        * Handle player leveling up
        */
       level: state => function () {
-        const abilities = this.playerClass.abilityTable;
-        if (!(this.level in this.playerClass.abilityTable)) {
+        const abilities = this.playerCareer.abilityTable;
+        if (!(this.level in this.playerCareer.abilityTable)) {
           return;
         }
 
