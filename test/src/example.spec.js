@@ -4,11 +4,11 @@ const { expect } = require('chai');
 describe("Testing", () => {
 
   beforeEach(()=>{
-    
+
   })
 
-  describe("Method", () => {
-    it("Should pass", () => {
+  describe("constructor", () => {
+    it("constructs the instance", () => {
       expect(true).to.be.true;
     });
   });
