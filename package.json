@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "gulp && sudo ./gnosis -v --save=10 --respawn=10",
+    "start": "gulp && ./gnosis -v --save=10 --respawn=10",
     "gulp": "gulp",
     "test": "mocha",
     "test:coverage": "gulp && istanbul --include-all-sources cover _mocha -- -R dot --recursive ./test/**/*.spec.js"
