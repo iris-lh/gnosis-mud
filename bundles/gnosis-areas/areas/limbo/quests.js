@@ -16,7 +16,7 @@ module.exports = (srcPath) => {
         level: 1,
         desc: `A voice whispers to you: Welcome to the world, young one. This is a dangerous and deadly place, you should arm yourself.
 
- - Use '<white>get gun chest</white>' and '<white>get vest chest</white>' to get some gear.
+ - Use '<white>get gun locker</white>' and '<white>get vest locker</white>' to get some gear.
  - Equip it using '<white>wield gun</white>' and '<white>wear vest</white>'`,
         autoComplete: true,
         reward: (quest, player) => {
@@ -44,11 +44,11 @@ module.exports = (srcPath) => {
         },
         {
           type: EquipGoal,
-          config: { title: 'Wield A Weapon', slot: 'wield' }
+          config: { title: 'Wield A Weapon', slot: 'main hand' }
         },
         {
           type: EquipGoal,
-          config: { title: 'Equip Some Armor', slot: 'chest' }
+          config: { title: 'Equip Some Armor', slot: 'chest armor' }
         }
       ]
     },
