@@ -4,7 +4,7 @@ module.exports = {
   ARMOR: Symbol("ARMOR"),
   CONTAINER: Symbol("CONTAINER"),
   OBJECT: Symbol("OBJECT"),
-  POTION: Symbol("POTION"),
+  DRUG: Symbol("DRUG"),
   WEAPON: Symbol("WEAPON"),
   RESOURCE: Symbol("RESOURCE"),
 };

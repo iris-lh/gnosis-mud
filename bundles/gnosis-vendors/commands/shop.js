@@ -36,7 +36,7 @@ module.exports = (srcPath, bundlePath) => {
 
       // group vendor's items by category then display them
       let itemCategories = {
-        [ItemType.POTION]: {
+        [ItemType.DRUG]: {
           title: 'Drugs',
           items: [],
         },

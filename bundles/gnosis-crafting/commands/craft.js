@@ -125,8 +125,8 @@ module.exports = (srcPath, bundlePath) => {
   function getCraftingCategories(state) {
     let craftingCategories = [
       {
-        type: ItemType.POTION,
-        title: "Potion",
+        type: ItemType.DRUG,
+        title: "Drug",
         items: []
       },
       {
