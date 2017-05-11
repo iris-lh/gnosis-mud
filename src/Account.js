@@ -5,6 +5,7 @@ const Config  = require('./Config');
 
 class Account {
 
+  // need test
   constructor(data) {
     this.username   = data.username;
     this.characters = data.characters || [];
@@ -16,8 +17,8 @@ class Account {
     return this.username;
   }
 
-  addCharacter(username) {
-    this.characters.push(username);
+  addCharacter(name) {
+    this.characters.push(name);
   }
 
   hasCharacter(name) {
