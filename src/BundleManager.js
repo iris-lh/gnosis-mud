@@ -9,7 +9,7 @@ const fs = require('fs'),
     CommandType = require('./CommandType'),
     Item = require('./Item'),
     Npc = require('./Npc'),
-    PlayerClass = require('./PlayerClass'),
+    PlayerCareer = require('./PlayerCareer'),
     Room = require('./Room'),
     Skill = require('./Skill'),
     SkillType = require('./SkillType'),
@@ -60,7 +60,7 @@ class BundleManager {
       { path: 'areas/', fn: 'loadAreas' },
       { path: 'behaviors/', fn: 'loadBehaviors' },
       { path: 'channels.js', fn: 'loadChannels' },
-      { path: 'classes/', fn: 'loadClasses' },
+      { path: 'careers/', fn: 'loadCareers' },
       { path: 'commands/', fn: 'loadCommands' },
       { path: 'effects/', fn: 'loadEffects' },
       { path: 'help/', fn: 'loadHelp' },
@@ -466,25 +466,25 @@ class BundleManager {
     Logger.verbose(`\tENDLOAD: Skills...`);
   }
 
-  loadClasses(bundle, classesDir) {
-    Logger.verbose(`\tLOAD: Classes...`);
-    const files = fs.readdirSync(classesDir);
+  loadCareers(bundle, careersDir) {
+    Logger.verbose(`\tLOAD: Careers...`);
+    const files = fs.readdirSync(careersDir);
 
-    for (const classFile of files) {
-      const classPath = classesDir + classFile;
-      if (!fs.statSync(classPath).isFile() || !classFile.match(/js$/)) {
+    for (const careerFile of files) {
+      const careerPath = careersDir + careerFile;
+      if (!fs.statSync(careerPath).isFile() || !careerFile.match(/js$/)) {
         continue;
       }
 
-      const className = path.basename(classFile, path.extname(classFile));
-      const loader = require(classPath);
-      let classImport = loader(srcPath);
+      const careerName = path.basename(careerFile, path.extname(careerFile));
+      const loader = require(careerPath);
+      let careerImport = loader(srcPath);
 
-      Logger.verbose(`\t\t${className}`);
-      this.state.ClassManager.set(className, new PlayerClass(className, classImport));
+      Logger.verbose(`\t\t${careerName}`);
+      this.state.CareerManager.set(careerName, new PlayerCareer(careerName, careerImport));
     }
 
-    Logger.verbose(`\tENDLOAD: Classes...`);
+    Logger.verbose(`\tENDLOAD: Careers...`);
   }
 }
 

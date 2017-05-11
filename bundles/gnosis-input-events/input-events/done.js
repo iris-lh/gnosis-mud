@@ -13,8 +13,8 @@ module.exports = (srcPath) => {
       let player = args.player;
       player.hydrate(state);
 
-      // Allow the player class to modify the player (adding attributes, changing default prompt, etc)
-      player.playerClass.setupPlayer(player);
+      // Allow the player career to modify the player (adding attributes, changing default prompt, etc)
+      player.playerCareer.setupPlayer(player);
 
       player.save();
 

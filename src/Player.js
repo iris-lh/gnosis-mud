@@ -28,7 +28,7 @@ class Player extends Character {
     this.experience = data.experience || 0;
     this.extraPrompts = new Map();
     this.password  = data.password;
-    this.playerClass = null;
+    this.playerCareer = null;
     this.prompt = data.prompt || '[ %health.current%/%health.max% <bold>hp</bold> ]\n>>';
     this.socket = data.socket || null;
     const questData = Object.assign({
@@ -43,7 +43,7 @@ class Player extends Character {
     // Arbitrary data bundles are free to shove whatever they want in
     // WARNING: values must be JSON.stringify-able
     this.metadata = data.metadata || {};
-    this.playerClass = null;
+    this.playerCareer = null;
 
     // Default max inventory size config
     if (!isFinite(this.inventory.getMax())) {
@@ -221,8 +221,8 @@ class Player extends Character {
       this.account = state.AccountManager.getAccount(this.account);
     }
 
-    if (this.getMeta('class')) {
-      this.playerClass = state.ClassManager.get(this.getMeta('class'));
+    if (this.getMeta('career')) {
+      this.playerCareer = state.CareerManager.get(this.getMeta('career'));
     }
 
     // Hydrate inventory
@@ -259,7 +259,7 @@ class Player extends Character {
       inventory: this.inventory && this.inventory.serialize(),
       metadata: this.metadata,
       password: this.password,
-      playerClass: this.playerClass && this.playerClass.id,
+      playerCareer: this.playerCareer && this.playerCareer.id,
       prompt: this.prompt,
       quests: this.questTracker.serialize(),
       role: this.role,

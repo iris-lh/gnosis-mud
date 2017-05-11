@@ -1,17 +1,17 @@
 'use strict';
 
 /**
- * This is an _example_ implementation of a base player class. This, along with
- * CommandParser is one of the few core classes Gnosis encourages you to
+ * This is an _example_ implementation of a base player career. This, along with
+ * CommandParser is one of the few core careers Gnosis encourages you to
  * modify if you want more functionality. Almost all other features can be
  * overridden in bundles.
  */
-class PlayerClass {
+class PlayerCareer {
   /**
-   * @param {string} id  id corresponding to classes/<id>.js file
+   * @param {string} id  id corresponding to careers/<id>.js file
    * @param {object} config Definition, this object is completely arbitrary. In
    *     this example implementation it has a name, description, and ability
-   *     table. You are free to change this class as you wish
+   *     table. You are free to change this career as you wish
    */
   constructor(id, config) {
     this.id = id;
@@ -19,9 +19,9 @@ class PlayerClass {
   }
 
   /**
-   * Override this method in your class to do initial setup of the player. This
+   * Override this method in your career to do initial setup of the player. This
    * includes things like adding the resource attribute to the player or anything
-   * else that should be done when the player is initially given this class
+   * else that should be done when the player is initially given this career
    */
   setupPlayer(player) {
     if (typeof this.config.setupPlayer === 'function') {
@@ -80,4 +80,4 @@ class PlayerClass {
   }
 }
 
-module.exports = PlayerClass;
+module.exports = PlayerCareer;

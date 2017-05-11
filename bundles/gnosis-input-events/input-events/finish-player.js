@@ -18,7 +18,7 @@ module.exports = (srcPath) => {
       args.account.addCharacter(args.name);
       args.account.save();
 
-      player.setMeta('class', args.playerClass);
+      player.setMeta('career', args.playerCareer);
 
       const room = state.RoomManager.startingRoom;
       player.room = room;

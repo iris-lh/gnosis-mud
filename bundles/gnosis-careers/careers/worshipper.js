@@ -2,13 +2,13 @@
 
 module.exports = srcPath => {
   return {
-    name: 'Paladin',
-    description: 'Defenders of the Light. Paladins wield the favor of their god to heal the wounded, protect those in danger, and smite their enemies. They may not wield as much raw physical power as Warriors but their ability to keep themselves and others alive in the face of danger has no equal.',
+    name: 'Worshipper',
+    description: 'Faithful.',
 
     abilityTable: {
-      3: { skills: ['judge'] },
-      5: { skills: ['plea'] },
-      7: { skills: ['smite'] },
+      // 3: { skills: ['judge'] },
+      // 5: { skills: ['plea'] },
+      // 7: { skills: ['smite'] },
     },
 
     setupPlayer: player => {
