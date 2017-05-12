@@ -241,7 +241,11 @@ class TelnetStream extends EventEmitter
       this.stream.fresh = false;
       return;
     }
-    this.emit('data', cleanbuf.slice(0, cleanlen - 1));
+
+    
+    // OLD
+    // this.emit('data', cleanbuf.slice(0, cleanlen - 1));
+    this.emit('data', cleanbuf.slice(0, cleanlen));
   }
 }
 
