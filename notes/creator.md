@@ -1,6 +1,6 @@
 # Creator Commands
 
----
+
 
 ## `search`
 
@@ -19,7 +19,7 @@ Examples:
 
   - Returns all items with type WEAPON
 
----
+
 
 ## `new`
 
@@ -43,7 +43,7 @@ Examples:
 
   - `Created area:rhode-island:1 'Parking Lot'`
 
----
+
 
 ## `edit`
 
