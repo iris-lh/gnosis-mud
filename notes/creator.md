@@ -2,7 +2,7 @@
 
 ---
 
-# `search`
+## `search`
 
 _Search content by type_
 
@@ -22,7 +22,7 @@ Examples:
 
 
 
-# `new`
+## `new`
 
 _Create a new piece of content, server responds with the new content's ID_
 
@@ -46,7 +46,7 @@ Examples:
 
 
 
-# `edit`
+## `edit`
 
 _Edit a piece of content_
 
