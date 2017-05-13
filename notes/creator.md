@@ -4,30 +4,26 @@
 
 ## `search`
 
-_Search content by type_
+*Search for elements (needs fleshed out)*
 
-_Syntax: `search <content type>`_
-
-Examples:
-
-- `search areas`
-
-  - Returns all areas
+*Aliases:* `find, list`
 
 
-- `search items type=WEAPON`
 
-  - Returns all items with type WEAPON
+## `show`
 
+*Display detailed information about an item*
+
+*Aliases:* `info`
 
 
 ## `new`
 
-_Create a new piece of content, server responds with the new content's ID_
+*Create a new element, server responds with the new element's ID*
 
-_Syntax: `new <content type> <name> [id]`_
+*Syntax:* `new <element type> <name> [id]`
 
-Examples:
+*Examples:*
 
 - `new item 'Steel Plate'`
 
@@ -47,14 +43,16 @@ Examples:
 
 ## `edit`
 
-_Edit a piece of content_
+*Edit an element*
 
-_Syntax: `edit <id> <property> <value>`_
+*Syntax:* `edit <id> <property> <value>`
 
-Examples:
+*Examples:*
 
 - `edit item:1 name 'Bent Steel Plate'`
 
+
 - `edit item:'9mm Pistol' properties.minDamage 20`
+
 
 - `edit area:limbo:2 exits 'north east up'`
