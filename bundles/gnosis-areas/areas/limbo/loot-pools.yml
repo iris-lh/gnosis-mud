@@ -1,6 +1,6 @@
 ---
 drugs:
-  - "limbo:7": 10
-  - "limbo:8": 5
+  - "item:first-aid-kit-basic": 10
+  - "item:stimulant-basic": 5
 junk:
-  - "limbo:4": 50
+  - "item:scrap-metal": 50

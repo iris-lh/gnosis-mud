@@ -36,11 +36,11 @@ module.exports = (srcPath) => {
       goals: [
         {
           type: FetchGoal,
-          config: { title: 'Find A Weapon', count: 1, item: "limbo:1" }
+          config: { title: 'Find A Weapon', count: 1, item: "item:worn-9mm-pistol" }
         },
         {
           type: FetchGoal,
-          config: { title: 'Find Some Armor', count: 1, item: "limbo:6" }
+          config: { title: 'Find Some Armor', count: 1, item: "item:ballistic-vest" }
         },
         {
           type: EquipGoal,
@@ -73,7 +73,7 @@ Once you find some bring it back to the rat, use '<white>quest log</white>' to f
           config: {
             title: 'Found Cheese',
             count: 1,
-            item: "limbo:2",
+            item: "item:slice-of-cheese",
             removeItem: true,
           }
         }
@@ -84,7 +84,7 @@ Once you find some bring it back to the rat, use '<white>quest log</white>' to f
       config: {
         title: "Self Defense 101",
         level: 2,
-        requires: [ "limbo:1" ],
+        requires: [ "item:worn-9mm-pistol" ],
         autoComplete: true,
         desc: `A voice whispers to you: It would be wise to practice protecting yourself. There are a number of training dummies in this area that, while not pushovers, will not be too difficult.
 

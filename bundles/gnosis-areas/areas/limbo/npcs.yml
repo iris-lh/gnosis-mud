@@ -4,7 +4,7 @@
   level: 2
   description: "The rat's beady red eyes dart frantically, its mouth foaming as it scampers about."
   script: '1-rat'
-  items: ['limbo:2']
+  items: ['item:slice-of-cheese']
   quests: ['limbo:2']
 - id: 2
   keywords: ["wise", "old", "man"]
@@ -41,7 +41,7 @@
       pools:
         - "limbo:junk"
         - "limbo:drugs"
-        - "limbo:2": 25
+        - "item:slice-of-cheese": 25
   description: >-
     The training android is almost human shaped although slightly out of proportion. The material it's made of is hard to
     discern; it seems to constantly change between metal, plastic, cloth, and glass depending on the angle. There is a
@@ -61,8 +61,8 @@
           max: 100
       pools:
         - "limbo:drugs"
-        - "limbo:5": 100
-        - "limbo:9": 5
+        - "item:45-pistol": 100
+        - "item:pulse-rifle": 5
 - id: 6
   keywords: ["wally", "wonderful", "shop", "vendor"]
   name: "Wally the Wonderful"
@@ -73,22 +73,22 @@
   behaviors:
     vendor:
       items:
-        "limbo:5":
+        "item:45-pistol":
           cost: 30
           currency: cr
-        "limbo:6":
+        "item:ballistic-vest":
           cost: 30
           currency: cr
-        "limbo:10":
+        "item:shield-generator-civilian":
           cost: 30
           currency: cr
-        "limbo:7":
+        "item:first-aid-kit-basic":
           cost: 100
           currency: cr
-        "limbo:8":
+        "item:stimulant-basic":
           cost: 150
           currency: cr
-        "limbo:9":
+        "item:pulse-rifle":
           cost: 1000
           currency: cr
       enterMessage: "Step right up! Get your wares at Moe's Shop!"
